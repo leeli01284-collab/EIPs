@@ -1,6 +1,6 @@
 name: Do you want to propose a change to the EIP process itself?
-description: Use this if you want to propose changes to the EIP process
-labels: ['enhancement']
+description: Use this template to propose specific changes or improvements to the Ethereum Improvement Proposal (EIP) process itself.
+labels: ['enhancement', 'process-change', 'EIP-process']
 
 body:
   - type: textarea
@@ -8,6 +8,27 @@ body:
     attributes:
       label: Proposed Change
       description: What do you think should be different?
-      placeholder: Describe your proposed change here
+      placeholder: |
+        Example: I propose that we add a new stage in the EIP lifecycle called "Community Review" that occurs between Draft and Review stages. This would allow for broader community input before formal review by editors.
+        
+        Describe your proposed change here in detail.
     validations:
       required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Expected Impact
+      description: What impact do you anticipate this change will have?
+      placeholder: Describe the expected impact here
+    validations:
+      required: true
+
+  - type: input
+    id: references
+    attributes:
+      label: References
+      description: Provide any relevant links or resources.
+      placeholder: Add links or references here
+    validations:
+      required: false
