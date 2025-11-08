@@ -1,5 +1,13 @@
 # Instructions for Creating Cross-Repo Pull Request
 
+## ⚠️ IMPORTANT: First Step Required
+**Before creating the PR, you MUST push the branch `eip-draft-univ8-eth-initial` to GitHub:**
+```bash
+cd /home/runner/work/EIPs/EIPs
+git checkout eip-draft-univ8-eth-initial
+git push -u origin eip-draft-univ8-eth-initial
+```
+
 ## Overview
 This document provides instructions for creating a pull request from the fork `leeli01284-collab/EIPs` to the upstream `ethereum/EIPs` repository.
 
@@ -16,21 +24,33 @@ This document provides instructions for creating a pull request from the fork `l
 - You must have push access to the `leeli01284-collab/EIPs` repository
 - The branch `eip-draft-univ8-eth-initial` must exist in the fork with the EIP draft content
 
-### Step 1: Verify the Branch Exists
-First, ensure the branch exists in your fork:
-```bash
-git ls-remote https://github.com/leeli01284-collab/EIPs.git | grep eip-draft-univ8-eth-initial
-```
+### Step 1: Push the Branch (REQUIRED FIRST STEP)
+The branch `eip-draft-univ8-eth-initial` exists locally but needs to be pushed to the fork:
 
-If the branch doesn't exist, you'll need to create and push it:
 ```bash
 # In your local clone of leeli01284-collab/EIPs
-git checkout copilot/add-eip-draft-univ8-eth
-git checkout -b eip-draft-univ8-eth-initial
+cd /home/runner/work/EIPs/EIPs
+git checkout eip-draft-univ8-eth-initial
 git push -u origin eip-draft-univ8-eth-initial
 ```
 
-### Step 2: Create the Pull Request via GitHub Web UI
+Verify the branch was pushed successfully:
+```bash
+git ls-remote origin | grep eip-draft-univ8-eth-initial
+```
+
+You should see output like:
+```
+<sha>	refs/heads/eip-draft-univ8-eth-initial
+```
+
+### Step 2: Verify Branch is Pushed
+After pushing, verify the branch appears on GitHub:
+1. Go to https://github.com/leeli01284-collab/EIPs/branches
+2. Look for `eip-draft-univ8-eth-initial` in the list
+3. Or check via API: `curl -s https://api.github.com/repos/leeli01284-collab/EIPs/branches | grep eip-draft-univ8-eth-initial`
+
+### Step 3: Create the Pull Request via GitHub Web UI
 
 1. **Navigate to the upstream repository**:
    Go to https://github.com/ethereum/EIPs
@@ -49,7 +69,7 @@ git push -u origin eip-draft-univ8-eth-initial
 
 6. **Click "Create pull request"**
 
-### Step 3: Fill in PR Details
+### Step 4: Fill in PR Details
 
 **Title:**
 ```
@@ -149,9 +169,21 @@ Follow-up commits will add:
 - CI/CD workflow integration
 EOF
 )"
+
+# If the command succeeds, you can check the PR URL it returns
 ```
 
+**Note**: Before running this command, ensure you've completed Step 1 (pushing the branch).
+
+**Note**: Before running this command, ensure you've completed Step 1 (pushing the branch).
+
 ## Troubleshooting
+
+### Branch Not Pushed Yet
+If you get an error that the branch doesn't exist when creating the PR:
+1. Complete Step 1 first (push the branch)
+2. Verify the push was successful: `git ls-remote origin eip-draft-univ8-eth-initial`
+3. If still not showing, wait a minute for GitHub to update, then try again
 
 ### Branch Not Found
 If you get an error that the branch doesn't exist:
